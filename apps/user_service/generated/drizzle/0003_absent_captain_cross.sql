@@ -1,2 +1,0 @@
-ALTER TABLE "following" ADD CONSTRAINT "following_user_id_unique" UNIQUE("user_id");--> statement-breakpoint
-ALTER TABLE "following" ADD CONSTRAINT "following_following_id_unique" UNIQUE("following_id");
