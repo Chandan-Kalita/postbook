@@ -1,0 +1,54 @@
+{
+  "name": "frontend",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": ".",
+  "projectType": "application",
+  "targets": {
+    "build": {
+      "executor": "@nx/next:build",
+      "outputs": ["{projectRoot}/output/.next"],
+      "defaultConfiguration": "production",
+      "configurations": {
+        "production": {},
+        "development": {
+          "optimization": false,
+          "sourceMap": true,
+          "outputPath": "dist/frontend"
+        }
+      }
+    },
+    "serve": {
+      "executor": "@nx/next:server",
+      "options": {
+        "buildTarget": "frontend:build",
+        "dev": true
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "frontend:build:development",
+          "dev": true
+        },
+        "production": {
+          "buildTarget": "frontend:build:production",
+          "dev": false
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["./**/*.{ts,tsx,js,jsx}"]
+      }
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{projectRoot}/coverage"],
+      "options": {
+        "jestConfig": "jest.config.ts",
+        "passWithNoTests": true
+      }
+    }
+  },
+  "tags": []
+}
