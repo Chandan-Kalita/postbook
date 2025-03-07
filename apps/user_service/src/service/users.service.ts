@@ -8,7 +8,7 @@ export class UsersProfileService {
     }
 
     async getProfile(username: string) {
-        let users = await this.db.select().from(usersTable).where(eq(usersTable.username, username))
+        const users = await this.db.select().from(usersTable).where(eq(usersTable.username, username))
         if (users.length === 0) {
             throw new Error("User not found");
         }
@@ -70,7 +70,7 @@ export class UsersProfileService {
     }
 
     async getUserId(username: string) {
-        let users = await this.db.select().from(usersTable).where(eq(usersTable.username, username))
+        const users = await this.db.select().from(usersTable).where(eq(usersTable.username, username))
         if (users.length === 0) {
             throw new Error("User not found");
         }

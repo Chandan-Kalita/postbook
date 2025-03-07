@@ -25,7 +25,7 @@ export class UserService {
     }
 
     async profile(username: string) {
-        let users = await this.db.select().from(usersTable).where(eq(usersTable.username, username))
+        const users = await this.db.select().from(usersTable).where(eq(usersTable.username, username))
         if (users.length === 0) {
             throw new Error("User not found");
         }
@@ -34,7 +34,7 @@ export class UserService {
     }
 
     async getUser(username: string) {
-        let users = await this.db.select().from(usersTable).where(eq(usersTable.username, username))
+        const users = await this.db.select().from(usersTable).where(eq(usersTable.username, username))
         if (users.length === 0) {
             throw new Error("User not found");
         }
@@ -43,7 +43,7 @@ export class UserService {
     }
 
     async updateProfile(id: string, data: TypeProfileUpdateReqModel) {
-        let users = await this.db.select().from(usersTable).where(eq(usersTable.id, id))
+        const users = await this.db.select().from(usersTable).where(eq(usersTable.id, id))
         if (users.length === 0) {
             throw new Error("User not found");
         }
