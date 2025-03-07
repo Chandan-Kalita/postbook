@@ -42,7 +42,7 @@ export const bootstrap = () => {
   const port = process.env.PORT || 3000;
   app.use(
     cors({
-      origin: 'http://localhost:3000',
+      origin: 'http://localhost:4200',
       optionsSuccessStatus: 200,
     })
   );
